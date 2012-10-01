@@ -1,0 +1,15 @@
+﻿.x-menu.x-menu-horizontal .x-menu-list 
+{        	
+	background-color:Menu;
+    overflow: hidden;
+}
+.x-menu.x-menu-horizontal .x-menu-list .x-menu-list-item 
+{        	
+    float: left;
+}
+.x-menu.x-menu-horizontal .x-menu-list .x-menu-list-item .x-menu-item-arrow {            
+    background-color:Menu;            
+    font-family:Times New Roman;
+    font-size:10pt;
+    font-weight:bold;            
+}

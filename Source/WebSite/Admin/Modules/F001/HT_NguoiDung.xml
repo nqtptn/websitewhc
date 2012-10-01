@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Columns>
+  <Column DataIndex ="TenNhomND" Header="Tên nhóm" />
+  <Column DataIndex ="Madv" Header="Mã đơn vị" />
+</Columns>

@@ -1,0 +1,15 @@
+E:\ALLPROJECT\Charity\CommonWebSite\bin\Debug\CommonWebSite.dll
+E:\ALLPROJECT\Charity\CommonWebSite\bin\Debug\CommonWebSite.pdb
+E:\ALLPROJECT\Charity\CommonWebSite\obj\Debug\ResolveAssemblyReference.cache
+E:\ALLPROJECT\Charity\CommonWebSite\obj\Debug\CommonWebSite.dll
+E:\ALLPROJECT\Charity\CommonWebSite\obj\Debug\CommonWebSite.pdb
+D:\PROJECT\Charity project\Charity\CommonWebSite\bin\Debug\CommonWebSite.dll
+D:\PROJECT\Charity project\Charity\CommonWebSite\bin\Debug\CommonWebSite.pdb
+D:\PROJECT\Charity project\Charity\CommonWebSite\obj\Debug\ResolveAssemblyReference.cache
+D:\PROJECT\Charity project\Charity\CommonWebSite\obj\Debug\CommonWebSite.dll
+D:\PROJECT\Charity project\Charity\CommonWebSite\obj\Debug\CommonWebSite.pdb
+E:\ALLPROJECT\Charity\Charity2609\CommonWebSite\bin\Debug\CommonWebSite.dll
+E:\ALLPROJECT\Charity\Charity2609\CommonWebSite\bin\Debug\CommonWebSite.pdb
+E:\ALLPROJECT\Charity\Charity2609\CommonWebSite\obj\Debug\ResolveAssemblyReference.cache
+E:\ALLPROJECT\Charity\Charity2609\CommonWebSite\obj\Debug\CommonWebSite.dll
+E:\ALLPROJECT\Charity\Charity2609\CommonWebSite\obj\Debug\CommonWebSite.pdb

@@ -1,0 +1,18 @@
+E:\ALLPROJECT\Charity\ModelWebSite\bin\Debug\ModelWebSite.dll.config
+E:\ALLPROJECT\Charity\ModelWebSite\bin\Debug\ModelWebSite.dll
+E:\ALLPROJECT\Charity\ModelWebSite\bin\Debug\ModelWebSite.pdb
+E:\ALLPROJECT\Charity\ModelWebSite\obj\Debug\ResolveAssemblyReference.cache
+E:\ALLPROJECT\Charity\ModelWebSite\obj\Debug\ModelWebSite.dll
+E:\ALLPROJECT\Charity\ModelWebSite\obj\Debug\ModelWebSite.pdb
+D:\PROJECT\Charity project\Charity\ModelWebSite\bin\Debug\ModelWebSite.dll.config
+D:\PROJECT\Charity project\Charity\ModelWebSite\bin\Debug\ModelWebSite.dll
+D:\PROJECT\Charity project\Charity\ModelWebSite\bin\Debug\ModelWebSite.pdb
+D:\PROJECT\Charity project\Charity\ModelWebSite\obj\Debug\ResolveAssemblyReference.cache
+D:\PROJECT\Charity project\Charity\ModelWebSite\obj\Debug\ModelWebSite.dll
+D:\PROJECT\Charity project\Charity\ModelWebSite\obj\Debug\ModelWebSite.pdb
+E:\ALLPROJECT\Charity\Charity2609\ModelWebSite\bin\Debug\ModelWebSite.dll.config
+E:\ALLPROJECT\Charity\Charity2609\ModelWebSite\bin\Debug\ModelWebSite.dll
+E:\ALLPROJECT\Charity\Charity2609\ModelWebSite\bin\Debug\ModelWebSite.pdb
+E:\ALLPROJECT\Charity\Charity2609\ModelWebSite\obj\Debug\ResolveAssemblyReference.cache
+E:\ALLPROJECT\Charity\Charity2609\ModelWebSite\obj\Debug\ModelWebSite.dll
+E:\ALLPROJECT\Charity\Charity2609\ModelWebSite\obj\Debug\ModelWebSite.pdb
