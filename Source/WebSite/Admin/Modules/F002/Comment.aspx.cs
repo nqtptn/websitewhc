@@ -178,4 +178,16 @@ public partial class Admin_Modules_F002_Comment : System.Web.UI.Page
             X.Msg.Alert("Thông báo", "Error :" + ex.ToString()).Show();
         }
     }
+    protected void gplList_RowSelect(object sender, DirectEventArgs e)
+    {
+        string select = e.ExtraParams["ID"].ToString();
+
+        if (!string.IsNullOrEmpty(select))
+        {
+            string IDProduct = select;
+            List<Comment> listComment = HeThongBL.GetListComment().Where(item => item.ProductID == IDProduct).OrderBy(item => item.DateCreated).ToList();
+            stComment.DataSource = listComment;
+            stComment.DataBind();
+        }
+    }
 }

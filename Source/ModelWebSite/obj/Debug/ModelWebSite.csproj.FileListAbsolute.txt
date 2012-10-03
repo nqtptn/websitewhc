@@ -16,3 +16,9 @@ E:\ALLPROJECT\Charity\Charity2609\ModelWebSite\bin\Debug\ModelWebSite.pdb
 E:\ALLPROJECT\Charity\Charity2609\ModelWebSite\obj\Debug\ResolveAssemblyReference.cache
 E:\ALLPROJECT\Charity\Charity2609\ModelWebSite\obj\Debug\ModelWebSite.dll
 E:\ALLPROJECT\Charity\Charity2609\ModelWebSite\obj\Debug\ModelWebSite.pdb
+E:\ALLPROJECT\Charity\Charity2609\Subversion\Source\ModelWebSite\bin\Debug\ModelWebSite.dll.config
+E:\ALLPROJECT\Charity\Charity2609\Subversion\Source\ModelWebSite\bin\Debug\ModelWebSite.dll
+E:\ALLPROJECT\Charity\Charity2609\Subversion\Source\ModelWebSite\bin\Debug\ModelWebSite.pdb
+E:\ALLPROJECT\Charity\Charity2609\Subversion\Source\ModelWebSite\obj\Debug\ResolveAssemblyReference.cache
+E:\ALLPROJECT\Charity\Charity2609\Subversion\Source\ModelWebSite\obj\Debug\ModelWebSite.dll
+E:\ALLPROJECT\Charity\Charity2609\Subversion\Source\ModelWebSite\obj\Debug\ModelWebSite.pdb

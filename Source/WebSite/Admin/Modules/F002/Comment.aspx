@@ -164,7 +164,7 @@
                     </ext:FieldSet>
                     <ext:Toolbar ID="Toolbar2" runat="server">
                         <Items>
-                            <ext:Button runat="server" ID="btnAddNew" Text="Add" Icon="ApplicationAdd">
+                           <%-- <ext:Button runat="server" ID="btnAddNew" Text="Add" Icon="ApplicationAdd">
                                 <Listeners>
                                     <Click Handler="Ext.net.DirectMethods.addItem();" />
                                 </Listeners>
@@ -173,7 +173,7 @@
                                 <Listeners>
                                     <Click Handler="Ext.net.DirectMethods.editItem();" />
                                 </Listeners>
-                            </ext:Button>
+                            </ext:Button>--%>
                             <ext:Button runat="server" ID="btnDelete" Text="Delete" Icon="ApplicationDelete">
                                 <Listeners>
                                     <Click Handler="deleteItem();" />
@@ -206,10 +206,19 @@
                         </ColumnModel>
                         <SelectionModel>
                             <ext:RowSelectionModel ID="RowSelectionModel1" runat="server" SingleSelect="true">
-                                <Listeners>
-                                <%--<RowSelect Handler="LoadComment();" />--%>
+                                <%--  <Listeners>
+                                <RowSelect Handler="LoadComment();" />
                                     <RowSelect Handler="Ext.net.DirectMethods.LoadComment();" />
-                                </Listeners>
+                                </Listeners>--%>
+                                <DirectEvents>
+                                    <RowSelect OnEvent="gplList_RowSelect" Success="">
+                                        <ExtraParams>
+                                            <ext:Parameter Name="ID" Value="record.data['ID']" Mode="Raw">
+                                            </ext:Parameter>
+                                        </ExtraParams>
+                                        <EventMask ShowMask="true" />
+                                    </RowSelect>
+                                </DirectEvents>
                             </ext:RowSelectionModel>
                         </SelectionModel>
                         <%--<DirectEvents>

@@ -27,7 +27,7 @@
     <Items>
         <ext:Toolbar runat="server" ID="tbSaveItem">
             <Items>
-                <ext:Button ID="btnSave" runat="server" Text="Save" Icon="Disk">
+                <ext:Button ID="btnDelete" runat="server" Text="Delete" Icon="Disk">
                     <Listeners>
                         <Click Handler="#{DirectMethods}.Delete();" />
                     </Listeners>
