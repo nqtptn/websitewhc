@@ -696,5 +696,63 @@ namespace BusinessWebSite
             }
         }
         #endregion ImageLibrary
+        #region CollectionImage
+        public static List<CollectionImage> GetListCollectionImage()
+        {
+            try
+            {
+                return entityBL.GetEntityList<CollectionImage>().OrderBy(item => item.ID).ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public static bool DeleteCollectionImage(string ID)
+        {
+            try
+            {
+                //return true;
+                return entityBL.DeleteEntityByID<CollectionImage>(ID);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public static bool UpdateCollectionImage(CollectionImage entity)
+        {
+            try
+            {
+                return entityBL.UpdateEntity<CollectionImage>(entity);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public static bool AddCollectionImage(CollectionImage entity)
+        {
+            try
+            {
+                return entityBL.InsertEntity<CollectionImage>(entity);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public static CollectionImage GetCollectionImageByID(string ID)
+        {
+            try
+            {
+                return entityBL.GetEntityByID<CollectionImage>(ID);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        #endregion CollectionImage
     }
 }
