@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Comment.aspx.cs" Inherits="Admin_Modules_F002_Comment" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CollectionImage.aspx.cs" Inherits="Admin_Modules_F003_CollectionImage" %>
 
-<%@ Register Src="~/Admin/Modules/F002/CommentUC.ascx" TagName="CommentUC" TagPrefix="uc1" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head id="Head1" runat="server">
-    <title>Users</title>
+<head runat="server">
+    <title></title>
     <script type="text/javascript">
         var filterTree = function (el, e) {
             var tree = tplNhomND,
@@ -43,13 +43,6 @@
                 }
             });
         };
-        var LoadComment = function () {
-            Ext.Msg.confirm('Thông báo', 'Bạn có chắc là muốn ?', function (btn) {
-                if (btn == "yes") {
-                    Ext.net.DirectMethods.LoadComment();
-                }
-            });
-        };
     </script>
 </head>
 <body>
@@ -59,32 +52,11 @@
         <Reader>
             <ext:JsonReader IDProperty="ID">
                 <Fields>
-                    <ext:RecordField Name="ID" />
-                    <ext:RecordField Name="CategoryID" />
-                    <ext:RecordField Name="Name" />
-                    <ext:RecordField Name="Image" />
-                    <ext:RecordField Name="ShortDescription" />
-                    <ext:RecordField Name="FullDescription" />
-                    <ext:RecordField Name="Tag" />
-                    <ext:RecordField Name="Viewer" />
-                    <ext:RecordField Name="isComment" Type="Boolean" />
-                    <ext:RecordField Name="DateCreated" />
-                    <ext:RecordField Name="CreatedBy" />
-                </Fields>
-            </ext:JsonReader>
-        </Reader>
-    </ext:Store>
-    <ext:Store ID="stComment" runat="server">
-        <Reader>
-            <ext:JsonReader IDProperty="ID">
-                <Fields>
-                    <ext:RecordField Name="ID" />
-                    <ext:RecordField Name="ProductID" />
-                    <ext:RecordField Name="Name" />
-                    <ext:RecordField Name="Email" />
-                    <ext:RecordField Name="Phone" />
-                    <ext:RecordField Name="Comment" />
-                    <ext:RecordField Name="DateCreated" />
+                <ext:RecordField Name="ID" />
+                <ext:RecordField Name="CategoryID" />
+                <ext:RecordField Name="Name" />
+                <ext:RecordField Name="Image" />
+                <ext:RecordField Name="ShortDescription" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -119,7 +91,7 @@
     </ext:Hidden>
     <ext:Hidden ID="hidChanged" runat="server" Text="0">
     </ext:Hidden>
-    <uc1:CommentUC ID="CommentUC" runat="server" />
+    <uc1:ImageLibraryUC ID="ImageLibraryUC" runat="server" />
     <ext:Viewport ID="Viewport1" runat="server" Layout="border">
         <Items>
             <ext:Panel ID="Panel1" runat="server" Title="UserGroup" Region="West" Layout="accordion"
@@ -164,7 +136,7 @@
                     </ext:FieldSet>
                     <ext:Toolbar ID="Toolbar2" runat="server">
                         <Items>
-                           <%-- <ext:Button runat="server" ID="btnAddNew" Text="Add" Icon="ApplicationAdd">
+                            <ext:Button runat="server" ID="btnAddNew" Text="Add" Icon="ApplicationAdd">
                                 <Listeners>
                                     <Click Handler="Ext.net.DirectMethods.addItem();" />
                                 </Listeners>
@@ -173,7 +145,7 @@
                                 <Listeners>
                                     <Click Handler="Ext.net.DirectMethods.editItem();" />
                                 </Listeners>
-                            </ext:Button>--%>
+                            </ext:Button>
                             <ext:Button runat="server" ID="btnDelete" Text="Delete" Icon="ApplicationDelete">
                                 <Listeners>
                                     <Click Handler="deleteItem();" />
@@ -186,10 +158,11 @@
                             </ext:Button>
                         </Items>
                     </ext:Toolbar>
-                    <ext:GridPanel ID="gplList" runat="server" StoreID="stList" Title="" Height="300"
+                    <ext:GridPanel ID="gplList" runat="server" StoreID="stList" Title="" Height="490"
                         Flayout="Fit" AutoScroll="true">
+                        
                         <TopBar>
-                            <ext:PagingToolbar ID="PagingToolbar2" runat="server" PageSize="8" DisplayInfo="true"
+                            <ext:PagingToolbar ID="PagingToolbar2" runat="server" PageSize="15" DisplayInfo="true"
                                 DisplayMsg="Dòng {0} - {1}/{2}" EmptyMsg="No data" StoreID="stList" />
                         </TopBar>
                         <ColumnModel ID="ColumnModel1" runat="server">
@@ -197,71 +170,21 @@
                                 <ext:RowNumbererColumn runat="server" Width="35" />
                                 <ext:Column DataIndex="ID" Header="ID" Hidden="true" />
                                 <ext:Column DataIndex="Name" Sortable="true" Header="Tên bài viết" Width="200" />
-                                <ext:CheckColumn DataIndex="isComment" Header="isComment" Width="50" />
-                                <ext:Column Header="DateCreated" Width="85" Sortable="true" DataIndex="DateCreated">
-                                    <Renderer Fn="Ext.util.Format.dateRenderer('m/d/Y')" />
-                                </ext:Column>
-                                <ext:Column DataIndex="CreatedBy" Sortable="true" Header="CreatedBy" Width="200" />
+                                
+                                <ext:TemplateColumn DataIndex="Image" Header="Image">
+                                    <Template ID="Template1" runat="server">
+                                        <Html>
+                                            <img style="width: 60px; height: 45px;" src="../../../Ad/{Image}"></img>
+                                        </Html>
+                                    </Template>
+                                </ext:TemplateColumn>
                             </Columns>
                         </ColumnModel>
                         <SelectionModel>
-                            <ext:RowSelectionModel ID="RowSelectionModel1" runat="server" SingleSelect="true">
-                                <%--  <Listeners>
-                                <RowSelect Handler="LoadComment();" />
-                                    <RowSelect Handler="Ext.net.DirectMethods.LoadComment();" />
-                                </Listeners>--%>
-                                <DirectEvents>
-                                    <RowSelect OnEvent="gplList_RowSelect" Success="">
-                                        <ExtraParams>
-                                            <ext:Parameter Name="ID" Value="record.data['ID']" Mode="Raw">
-                                            </ext:Parameter>
-                                        </ExtraParams>
-                                        <EventMask ShowMask="true" />
-                                    </RowSelect>
-                                </DirectEvents>
-                            </ext:RowSelectionModel>
+                            <ext:RowSelectionModel ID="RowSelectionModel1" runat="server" SingleSelect="true" />
                         </SelectionModel>
-                        <%--<DirectEvents>
-                            <RowDblClick  OnEvent="LoadComment">
-                                <ExtraParams>
-                                    <ext:Parameter Name="ID" Value="#{gplList}.getSelectionModel().getSelection().ID" Mode="Raw">
-                                    </ext:Parameter>
-                                </ExtraParams>
-                            </RowDblClick >
-                        </DirectEvents>--%>
                         <Plugins>
                             <ext:GridFilters runat="server" ID="gvFilters" Local="true">
-                                <Filters>
-                                    <ext:StringFilter DataIndex="Name" />
-                                    <ext:StringFilter DataIndex="CreatedBy" />
-                                </Filters>
-                            </ext:GridFilters>
-                        </Plugins>
-                        <LoadMask ShowMask="true" Msg="Đang tải..." MsgCls="Đang tải dữ liệu..." />
-                    </ext:GridPanel>
-                    <ext:GridPanel ID="gplComment" runat="server" StoreID="stComment" Title="" Height="490"
-                        Flayout="Fit" AutoScroll="true">
-                        <TopBar>
-                            <ext:PagingToolbar ID="PagingToolbar1" runat="server" PageSize="10" DisplayInfo="true"
-                                DisplayMsg="Dòng {0} - {1}/{2}" EmptyMsg="No data" StoreID="stList" />
-                        </TopBar>
-                        <ColumnModel ID="ColumnModel2" runat="server">
-                            <Columns>
-                                <ext:RowNumbererColumn runat="server" Width="35" />
-                                <ext:Column DataIndex="ID" Header="ID" Hidden="true" />
-                                <ext:Column DataIndex="Name" Sortable="true" Header="Tên bài viết" Width="200" />
-                                <ext:Column DataIndex="Email" Sortable="true" Header="Email" Width="200" />
-                                <ext:Column DataIndex="Phone" Sortable="true" Header="Phone" Width="200" />
-                                <ext:Column Header="DateCreated" Width="85" Sortable="true" DataIndex="DateCreated">
-                                    <Renderer Fn="Ext.util.Format.dateRenderer('m/d/Y')" />
-                                </ext:Column>
-                            </Columns>
-                        </ColumnModel>
-                        <SelectionModel>
-                            <ext:RowSelectionModel ID="RowSelectionModel2" runat="server" SingleSelect="true" />
-                        </SelectionModel>
-                        <Plugins>
-                            <ext:GridFilters runat="server" ID="GridFilters1" Local="true">
                                 <Filters>
                                     <ext:StringFilter DataIndex="Name" />
                                     <ext:StringFilter DataIndex="CreatedBy" />
