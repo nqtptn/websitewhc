@@ -1,7 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CollectionImage.aspx.cs" Inherits="Admin_Modules_F003_CollectionImage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CollectionImage.aspx.cs"
+    Inherits="Admin_Modules_F003_CollectionImage" %>
 
+<%@ Register Src="~/Admin/Modules/F003/CollectionImageUC.ascx" TagName="CollectionImageUC"
+    TagPrefix="uc1" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
@@ -52,11 +54,26 @@
         <Reader>
             <ext:JsonReader IDProperty="ID">
                 <Fields>
-                <ext:RecordField Name="ID" />
-                <ext:RecordField Name="CategoryID" />
-                <ext:RecordField Name="Name" />
-                <ext:RecordField Name="Image" />
-                <ext:RecordField Name="ShortDescription" />
+                    <ext:RecordField Name="ID" />
+                    <ext:RecordField Name="CategoryID" />
+                    <ext:RecordField Name="Name" />
+                    <ext:RecordField Name="Image" />
+                    <ext:RecordField Name="ShortDescription" />
+                </Fields>
+            </ext:JsonReader>
+        </Reader>
+    </ext:Store>
+    <ext:Store ID="stColectionImage" runat="server">
+        <Reader>
+            <ext:JsonReader IDProperty="ID">
+                <Fields>
+                    <ext:RecordField Name="ID" />
+                    <ext:RecordField Name="ImageLibraryID" />
+                    <ext:RecordField Name="Name" />
+                    <ext:RecordField Name="Title" />
+                    <ext:RecordField Name="Image" />
+                    <ext:RecordField Name="DateCreated" />
+                    <ext:RecordField Name="CreatedBy" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -91,7 +108,7 @@
     </ext:Hidden>
     <ext:Hidden ID="hidChanged" runat="server" Text="0">
     </ext:Hidden>
-    <uc1:ImageLibraryUC ID="ImageLibraryUC" runat="server" />
+    <uc1:CollectionImageUC ID="CollectionImageUC" runat="server" />
     <ext:Viewport ID="Viewport1" runat="server" Layout="border">
         <Items>
             <ext:Panel ID="Panel1" runat="server" Title="UserGroup" Region="West" Layout="accordion"
@@ -160,7 +177,6 @@
                     </ext:Toolbar>
                     <ext:GridPanel ID="gplList" runat="server" StoreID="stList" Title="" Height="490"
                         Flayout="Fit" AutoScroll="true">
-                        
                         <TopBar>
                             <ext:PagingToolbar ID="PagingToolbar2" runat="server" PageSize="15" DisplayInfo="true"
                                 DisplayMsg="Dòng {0} - {1}/{2}" EmptyMsg="No data" StoreID="stList" />
@@ -170,21 +186,60 @@
                                 <ext:RowNumbererColumn runat="server" Width="35" />
                                 <ext:Column DataIndex="ID" Header="ID" Hidden="true" />
                                 <ext:Column DataIndex="Name" Sortable="true" Header="Tên bài viết" Width="200" />
-                                
-                                <ext:TemplateColumn DataIndex="Image" Header="Image">
+                                <%--<ext:TemplateColumn DataIndex="Image" Header="Image">
                                     <Template ID="Template1" runat="server">
                                         <Html>
                                             <img style="width: 60px; height: 45px;" src="../../../Ad/{Image}"></img>
                                         </Html>
                                     </Template>
-                                </ext:TemplateColumn>
+                                </ext:TemplateColumn>--%>
                             </Columns>
                         </ColumnModel>
                         <SelectionModel>
-                            <ext:RowSelectionModel ID="RowSelectionModel1" runat="server" SingleSelect="true" />
+                            <ext:RowSelectionModel ID="RowSelectionModel1" runat="server" SingleSelect="true">
+                                <DirectEvents>
+                                    <RowSelect OnEvent="gplList_RowSelect" Success="">
+                                        <ExtraParams>
+                                            <ext:Parameter Name="ID" Value="record.data['ID']" Mode="Raw">
+                                            </ext:Parameter>
+                                        </ExtraParams>
+                                        <EventMask ShowMask="true" />
+                                    </RowSelect>
+                                </DirectEvents>
+                            </ext:RowSelectionModel>
                         </SelectionModel>
                         <Plugins>
                             <ext:GridFilters runat="server" ID="gvFilters" Local="true">
+                                <Filters>
+                                    <ext:StringFilter DataIndex="Name" />
+                                    <ext:StringFilter DataIndex="CreatedBy" />
+                                </Filters>
+                            </ext:GridFilters>
+                        </Plugins>
+                        <LoadMask ShowMask="true" Msg="Đang tải..." MsgCls="Đang tải dữ liệu..." />
+                    </ext:GridPanel>
+                    <ext:GridPanel ID="gplColectionImage" runat="server" StoreID="stColectionImage" Title=""
+                        Height="490" Flayout="Fit" AutoScroll="true">
+                        <TopBar>
+                            <ext:PagingToolbar ID="PagingToolbar1" runat="server" PageSize="10" DisplayInfo="true"
+                                DisplayMsg="Dòng {0} - {1}/{2}" EmptyMsg="No data" StoreID="stList" />
+                        </TopBar>
+                        <ColumnModel ID="ColumnModel2" runat="server">
+                            <Columns>
+                                <ext:RowNumbererColumn runat="server" Width="35" />
+                                <ext:Column DataIndex="ID" Header="ID" Hidden="true" />
+                                <ext:Column DataIndex="Name" Sortable="true" Header="Tên bài viết" Width="200" />
+                                <ext:Column DataIndex="Title" Sortable="true" Header="Email" Width="200" />
+                                <ext:Column Header="DateCreated" Width="85" Sortable="true" DataIndex="DateCreated">
+                                    <Renderer Fn="Ext.util.Format.dateRenderer('m/d/Y')" />
+                                </ext:Column>
+                            </Columns>
+                        </ColumnModel>
+                        <SelectionModel>
+                            <ext:RowSelectionModel ID="RowSelectionModel2" runat="server" SingleSelect="true" />
+                        </SelectionModel>
+                        <Plugins>
+                            <ext:GridFilters runat="server" ID="GridFilters1" Local="true">
                                 <Filters>
                                     <ext:StringFilter DataIndex="Name" />
                                     <ext:StringFilter DataIndex="CreatedBy" />

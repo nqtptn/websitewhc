@@ -119,7 +119,7 @@ public partial class Admin_Modules_F003_ImageLibrary : System.Web.UI.Page
     {
         if (!string.IsNullOrEmpty(emp.Image))
         {
-            string url = MapPath(String.Format("~/admin/Modules/f003/lib/{0}", emp.Image));
+            string url = MapPath(String.Format("~/ImageLibrary/{0}", emp.Image));
             try
             {
                 System.IO.File.Delete(url);

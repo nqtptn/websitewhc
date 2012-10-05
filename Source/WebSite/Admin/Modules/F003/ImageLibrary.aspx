@@ -175,7 +175,7 @@
                                 <ext:TemplateColumn DataIndex="Image" Header="Image">
                                     <Template ID="Template1" runat="server">
                                         <Html>
-                                            <img style="width: 60px; height: 45px;" src="../../../Ad/{Image}"></img>
+                                            <img style="width: 60px; height: 45px;" src="../../../ImageLibrary/{Image}"></img>
                                         </Html>
                                     </Template>
                                 </ext:TemplateColumn>

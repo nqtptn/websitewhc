@@ -82,6 +82,8 @@ public partial class Admin_Modules_F002_ProductUC : System.Web.UI.UserControl
         txtShort.Text = cn.ShortDescription;
         txtTag.Text = cn.Tag;
         txtViewer.Text = cn.Viewer.ToString();
+
+        imgPhoto.ImageUrl = CommonHelper.GetStoreLocation() + string.Format("Product/{0}", cn.Image);
         if (cn.isComment.HasValue)
             ckbComment.Checked = true;
         else
@@ -182,7 +184,7 @@ public partial class Admin_Modules_F002_ProductUC : System.Web.UI.UserControl
 
     protected string SaveFile(HttpPostedFile file, FileUploadField filImageUpload)
     {
-        string savePath = Server.MapPath("~/admin/Modules/f002/images/");
+        string savePath = Server.MapPath("~/Product/");
         string fileName = filImageUpload.FileName;
         string pathToCheck = savePath + fileName;
         string tempfileName = "";
@@ -209,7 +211,7 @@ public partial class Admin_Modules_F002_ProductUC : System.Web.UI.UserControl
     {
         if (!string.IsNullOrEmpty(emp))
         {
-            string url = MapPath(String.Format("~/admin/Modules/f002/images/{0}", emp));
+            string url = MapPath(String.Format("~/Product/{0}", emp));
             try
             {
                 System.IO.File.Delete(url);

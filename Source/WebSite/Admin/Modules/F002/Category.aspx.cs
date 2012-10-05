@@ -78,6 +78,9 @@ public partial class Admin_Modules_F002_Category : PageBase
             foreach (SelectedRow row in sm.SelectedRows)
             {
                 // Xoa dong chon theo key: row.RecordID
+                Category cate = HeThongBL.GetCategoryByID(row.RecordID.ToString().Trim());
+                if (!string.IsNullOrEmpty(cate.Image))
+                    DeleteOldFile(cate.Image);
                 bool test = HeThongBL.DeleteCategory(row.RecordID.ToString().Trim());
 
             }
@@ -86,6 +89,18 @@ public partial class Admin_Modules_F002_Category : PageBase
         catch (Exception ex)
         {
             X.Msg.Alert("Thông báo", "Error :" + ex.ToString()).Show();
+        }
+    }
+    protected void DeleteOldFile(string emp)
+    {
+        if (!string.IsNullOrEmpty(emp))
+        {
+            string url = MapPath(String.Format("~/Category/{0}", emp));
+            try
+            {
+                System.IO.File.Delete(url);
+            }
+            catch { }
         }
     }
     [DirectMethod]

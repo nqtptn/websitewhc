@@ -119,7 +119,7 @@ public partial class Admin_Modules_F002_Product : PageBase
     {
         if (!string.IsNullOrEmpty(emp.Image))
         {
-            string url = MapPath(String.Format("~/admin/Modules/f002/images/{0}", emp.Image));
+            string url = MapPath(String.Format("~/Product/{0}", emp.Image));
             try
             {
                 System.IO.File.Delete(url);
@@ -132,7 +132,10 @@ public partial class Admin_Modules_F002_Product : PageBase
     {
         try
         {
-            ProductUC.ShowAddNew();
+            //ProductUC.ShowAddNew();
+            Panel1.Hidden = true;
+            Panel4.Hidden = true;
+            EditUpdate.Hidden = false;
         }
         catch (Exception ex)
         {

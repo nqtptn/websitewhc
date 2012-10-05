@@ -47,7 +47,7 @@
         </ext:Hidden>
         <ext:Hidden ID="hidId" runat="server" Text="">
         </ext:Hidden>
-        <ext:Panel ID="Panel2" runat="server" Flayout="Fit" BodyCssClass="pnlUD" AutoScroll="true"
+        <ext:Panel ID="Panel2" runat="server" layout="FormLayout" BodyCssClass="pnlUD" AutoScroll="true"
             Height="550">
             <Content>
                 <ext:CompositeField ID="CompositeField3" FieldLabel="Danh mục cha" LabelWidth="100"
@@ -93,7 +93,7 @@
                 <ext:CompositeField ID="CompositeField2" FieldLabel="Vắng tắt" Height="170" runat="server"
                     CombineErrors="false">
                     <Items>
-                        <ext:TextArea ID="txtShort" runat="server" Hidden="true" Width="200" Height="50px">
+                        <ext:TextArea ID="txtShort" runat="server"  Width="200" Height="50px">
                         </ext:TextArea>
                     </Items>
                 </ext:CompositeField>

@@ -114,6 +114,14 @@
                                 </ext:CheckColumn>
                                 <ext:CheckColumn DataIndex="Published" Header="Công cộng">
                                 </ext:CheckColumn>
+                                
+                                <ext:TemplateColumn DataIndex="Image" Header="Image" Width="180">
+                                    <Template ID="Template1" runat="server">
+                                        <Html>
+                                            <a href="../../../Category/{Image}">{Image}</a>
+                                        </Html>
+                                    </Template>
+                                </ext:TemplateColumn>
                                 <ext:Column DataIndex="DisplayOrder" Header="Thứ tự" />
                             </Columns>
                         </ColumnModel>

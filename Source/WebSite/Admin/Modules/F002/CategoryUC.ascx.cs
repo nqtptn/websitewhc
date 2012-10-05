@@ -82,6 +82,7 @@ public partial class Admin_Modules_F002_CategoryUC : System.Web.UI.UserControl
         txtMetaDescription.Text = cn.MetaDescription;
         txtMetaKeyWord.Text = cn.MetaKeyWord;
         txtMetaTitle.Text = cn.MetaTitle;
+        imgPhoto.ImageUrl = CommonHelper.GetStoreLocation() + string.Format("Category/{0}", cn.Image);
         if (cn.isFormPost.HasValue)
             ckbisFormPost.Checked = true;
         else
@@ -199,7 +200,7 @@ public partial class Admin_Modules_F002_CategoryUC : System.Web.UI.UserControl
 
     protected string SaveFile(HttpPostedFile file, FileUploadField filImageUpload)
     {
-        string savePath = Server.MapPath("~/admin/Modules/f002/images/");
+        string savePath = Server.MapPath("~/Category/");
         string fileName = filImageUpload.FileName;
         string pathToCheck = savePath + fileName;
         string tempfileName = "";
@@ -226,7 +227,7 @@ public partial class Admin_Modules_F002_CategoryUC : System.Web.UI.UserControl
     {
         if (!string.IsNullOrEmpty(emp))
         {
-            string url = MapPath(String.Format("~/admin/Modules/f002/images/{0}", emp));
+            string url = MapPath(String.Format("~/Category/{0}", emp));
             try
             {
                 System.IO.File.Delete(url);

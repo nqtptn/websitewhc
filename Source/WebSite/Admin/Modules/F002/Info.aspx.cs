@@ -118,7 +118,7 @@ public partial class Admin_Modules_F002_Info : PageBase
     {
         if (!string.IsNullOrEmpty(emp.Image))
         {
-            string url = MapPath(String.Format("~/admin/Modules/f002/images/{0}", emp.Image));
+            string url = MapPath(String.Format("~/Info/{0}", emp.Image));
             try
             {
                 System.IO.File.Delete(url);

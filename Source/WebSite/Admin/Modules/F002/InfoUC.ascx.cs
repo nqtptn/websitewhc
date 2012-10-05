@@ -77,6 +77,8 @@ public partial class Admin_Modules_F002_InfoUC : System.Web.UI.UserControl
         txfPhoto.Text = cn.Image;
         txfFull.Text = cn.FullDescription;
         txfPhoto.Text = cn.Image;
+
+        imgPhoto.ImageUrl = CommonHelper.GetStoreLocation() + string.Format("Info/{0}", cn.Image);
         txtName.Text = cn.Name;
         txtShort.Text = cn.ShortDescription;
         if (cn.isContactForm.HasValue)
@@ -175,7 +177,7 @@ public partial class Admin_Modules_F002_InfoUC : System.Web.UI.UserControl
 
     protected string SaveFile(HttpPostedFile file, FileUploadField filImageUpload)
     {
-        string savePath = Server.MapPath("~/admin/Modules/f002/images/");
+        string savePath = Server.MapPath("~/Info/");
         string fileName = filImageUpload.FileName;
         string pathToCheck = savePath + fileName;
         string tempfileName = "";
@@ -202,7 +204,7 @@ public partial class Admin_Modules_F002_InfoUC : System.Web.UI.UserControl
     {
         if (!string.IsNullOrEmpty(emp))
         {
-            string url = MapPath(String.Format("~/admin/Modules/f002/images/{0}", emp));
+            string url = MapPath(String.Format("~/Info/{0}", emp));
             try
             {
                 System.IO.File.Delete(url);

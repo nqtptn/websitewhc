@@ -75,6 +75,7 @@ public partial class Admin_Modules_F003_ImageLibraryUC : System.Web.UI.UserContr
         txfPhoto.Text = cn.Image;
         txtName.Text = cn.Name;
         txtShort.Text = cn.ShortDescription;
+        imgPhoto.ImageUrl = CommonHelper.GetStoreLocation() + string.Format("ImageLibrary/{0}", cn.Image);
 
 
         if (!string.IsNullOrEmpty(cn.CategoryID))
@@ -160,7 +161,7 @@ public partial class Admin_Modules_F003_ImageLibraryUC : System.Web.UI.UserContr
 
     protected string SaveFile(HttpPostedFile file, FileUploadField filImageUpload)
     {
-        string savePath = Server.MapPath("~/admin/Modules/f003/images/");
+        string savePath = Server.MapPath("~/ImageLibrary/");
         string fileName = filImageUpload.FileName;
         string pathToCheck = savePath + fileName;
         string tempfileName = "";
@@ -187,7 +188,7 @@ public partial class Admin_Modules_F003_ImageLibraryUC : System.Web.UI.UserContr
     {
         if (!string.IsNullOrEmpty(emp))
         {
-            string url = MapPath(String.Format("~/admin/Modules/f003/images/{0}", emp));
+            string url = MapPath(String.Format("~/ImageLibrary/{0}", emp));
             try
             {
                 System.IO.File.Delete(url);
